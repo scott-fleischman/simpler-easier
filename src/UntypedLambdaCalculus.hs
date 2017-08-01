@@ -1,4 +1,4 @@
-module Main where
+module UntypedLambdaCalculus where
 
 import Data.List
 
@@ -61,14 +61,3 @@ nf ee = spine ee []
 
 betaEq :: Expr -> Expr -> Bool
 betaEq e1 e2 = alphaEq (nf e1) (nf e2)
-
-main :: IO ()
-main = print $ betaEq (app2 plus one two) three == True
-  where
-  [z,s,m,n] = map (Var . (:[])) "zsmn"
-  app2 f x y = App (App f x) y
-  zero  = Lam "s" $ Lam "z" z
-  one   = Lam "s" $ Lam "z" $ App s z
-  two   = Lam "s" $ Lam "z" $ App s $ App s z
-  three = Lam "s" $ Lam "z" $ App s $ App s $ App s z
-  plus  = Lam "m" $ Lam "n" $ Lam "s" $ Lam "z" $ app2 m s (app2 n s z)
