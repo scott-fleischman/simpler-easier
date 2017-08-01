@@ -1,0 +1,10 @@
+name: simpler-easier
+version: 0.1.0.0
+
+dependencies:
+  - base
+
+executables:
+  simpler-easier:
+    source-dirs: src
+    main: Main.hs
