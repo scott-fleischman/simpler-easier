@@ -21,6 +21,7 @@ freeVars :: Expr -> [Sym]
 freeVars (Var s) = [s]
 freeVars (App f a) = freeVars f `union` freeVars a
 freeVars (Lam i e) = freeVars e \\ [i]
+
 subst :: Sym -> Expr -> Expr -> Expr
 subst v x b = sub b
   where
